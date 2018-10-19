@@ -6,7 +6,6 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "dependencies": {
     "bcrypt": "^3.0.1",
     "body-parser": "^1.18.3",
@@ -24,7 +23,7 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
     "standard": "^12.0.1"
-  }
+  },
   "description": "API for WePoll application",
   "engines": {
     "node": "8.11.3"
@@ -33,8 +32,4 @@
   "devDependencies": {},
   "author": "BandsWithLegends",
   "license": "ISC"
-}
-
-
-
 }
