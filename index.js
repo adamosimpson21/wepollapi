@@ -7,13 +7,14 @@ const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error")
 
 //handling CORS
-const corsOptions = {
-  origin: 'https://wepoll.herokuapp.com',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+// const corsOptions = {
+//   origin: 'https://wepoll.herokuapp.com',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 //Config
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
