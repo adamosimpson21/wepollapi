@@ -15,6 +15,12 @@ const questionSchema = new mongoose.Schema({
     type:Number,
     default: 100
   },
+  reviews:[
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref: "Review"
+    }
+  ],
   author:{
     type:mongoose.Schema.Types.ObjectId,
     ref: "User"

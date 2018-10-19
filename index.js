@@ -14,7 +14,6 @@ const corsOptions = {
 
 //Config
 app.use(cors(corsOptions));
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -22,7 +21,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //requiring routes
 const questionsRoutes = require("./routes/questions");
-const otherRoutes     = require("./routes/other");
 const itemRoutes      = require("./routes/items");
 const authRoutes      = require("./routes/auth");
 const userRoutes      = require("./routes/user");
@@ -32,16 +30,13 @@ app.use("/api/questions", questionsRoutes);
 app.use("/api/items", itemRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/", otherRoutes);
 
 app.use(function(req, res, next){
-  let err = new Error("You're in the express app")
+  let err = new Error("Route not Found")
   err.status = 404;
   next(err)
 })
 
 app.use(errorHandler)
 
-app.listen(port, function(){
-  console.log("WePoll Server started!" + port);
-});
+app.listen(port);
