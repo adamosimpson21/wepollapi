@@ -2,15 +2,22 @@ require("dotenv").config();
 const express = require('express')
 const app = express();
 const cors = require("cors");
-const path = require('path');
 const port = process.env.PORT || 4000;
 const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error")
 
+//handling CORS
+const corsOptions = {
+  origin: 'http://wepollapi.herokuapp.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 //Config
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
+
 
 //requiring routes
 const questionsRoutes = require("./routes/questions");
@@ -33,10 +40,6 @@ app.use(function(req, res, next){
 })
 
 app.use(errorHandler)
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+"../WePollClient/build/index.html"));
-});
 
 app.listen(port, function(){
   console.log("WePoll Server started!" + port);

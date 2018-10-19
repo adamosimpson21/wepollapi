@@ -26,6 +26,7 @@
   },
   "description": "API for WePoll application",
   "engines": {
+    "npm": "5.6.0",
     "node": "8.11.3"
   },
   "main": "index.js",
