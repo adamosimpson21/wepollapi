@@ -8,7 +8,7 @@ const errorHandler = require("./handlers/error")
 
 //handling CORS
 const corsOptions = {
-  origin: 'http://wepollapi.herokuapp.com',
+  origin: 'http://wepoll.herokuapp.com',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
