@@ -67,7 +67,7 @@ exports.deleteQuestion = async function(req, res, next){
 exports.answerQuestion = async function(req, res, next){
   try{
     // TODO: There are a lot more things to include here. Not finished at all
-    let question = await db.Question.findById(req.params.question_id)
+    let question = await db.Question.findById(req.params.question_id).populate('results').populate('author', {username:true})
     let user = await db.User.findById(req.params.id)
     let result = await db.Result.create({question:question._id, user:user._id, answer:req.body.answer})
     Number.isInteger(question.xpReward) ? user.experience += question.xpReward : null
@@ -76,7 +76,11 @@ exports.answerQuestion = async function(req, res, next){
     question.results.push(result._id)
     await user.save();
     await question.save();
-    return res.status(200).json(result);
+    let response = {}
+    response.user = user;
+    response.question = question;
+    response.result = result;
+    return res.status(200).json(response);
   } catch(err){
     return next(err);
   }
