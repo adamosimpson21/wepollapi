@@ -18,6 +18,9 @@ const ItemSchema = new mongoose.Schema({
     type:Number,
     default: 1
   },
+  description:{
+    type:String
+  },
   canHaveMultiple:{
     type:Boolean,
     default: false
