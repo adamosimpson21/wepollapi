@@ -33,12 +33,14 @@ const questionsRoutes = require("./routes/questions");
 const itemRoutes      = require("./routes/items");
 const authRoutes      = require("./routes/auth");
 const userRoutes      = require("./routes/user");
+const partyRoutes      = require("./routes/party");
 
 //Using Routes
 app.use("/api/questions", questionsRoutes);
 app.use("/api/items", itemRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/party", partyRoutes);
 
 app.use(function(req, res, next){
   let err = new Error("Route not Found")

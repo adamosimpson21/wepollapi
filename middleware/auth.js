@@ -19,7 +19,7 @@ exports.loginRequired = function(req, res, next){
   } catch(err){
     return next({
       status: 401,
-      message: "Something else went wrong"
+      message: "Please Log in to do this"
     })
   }
 }
@@ -29,6 +29,7 @@ exports.ensureCorrectUser = function(req, res, next){
   try{
     const token = req.headers.authorization.split(" ")[1]
     jwt.verify(token, process.env.SECRET_KEY, function(err, decoded){
+      console.log("decoded is:, ", decoded, "req.params.id is: ", req.params.id)
       if(decoded && decoded.id === req.params.id){
         return next();
       } else {

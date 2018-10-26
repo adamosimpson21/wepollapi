@@ -7,19 +7,22 @@ const partySchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  president:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"User"
-  },
+  officers:[
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User"
+    }
+  ],
   members:[
     {
       type:mongoose.Schema.Types.ObjectId,
       ref:"User"
     }
   ],
+  joinType:String,
   description: String,
   image: String,
-  level: Number,
+  prestige: Number,
   partyLine:[]
 });
 
