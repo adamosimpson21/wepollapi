@@ -7,6 +7,12 @@ const partySchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  president:[
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User"
+    }
+  ],
   officers:[
     {
       type:mongoose.Schema.Types.ObjectId,
@@ -19,10 +25,23 @@ const partySchema = new mongoose.Schema({
       ref:"User"
     }
   ],
-  joinType:String,
+  approvalList:[
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User"
+    }
+  ],
+  joinType: {
+    type: String,
+    enum: ['open', 'closed', 'approval'],
+    default: 'open'
+  },
   description: String,
   image: String,
-  prestige: Number,
+  prestige: {
+    type:Number,
+    default:0
+  },
   partyLine:[]
 });
 

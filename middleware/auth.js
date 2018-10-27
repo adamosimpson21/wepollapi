@@ -29,11 +29,9 @@ exports.ensureCorrectUser = function(req, res, next){
   try{
     const token = req.headers.authorization.split(" ")[1]
     jwt.verify(token, process.env.SECRET_KEY, function(err, decoded){
-      console.log("decoded is:, ", decoded, "req.params.id is: ", req.params.id)
       if(decoded && decoded.id === req.params.id){
         return next();
       } else {
-        console.log("got here")
         return next({
           status: 401,
           message: "Unauthorized, Wrong User"
@@ -49,10 +47,8 @@ exports.ensureCorrectUser = function(req, res, next){
 }
 
 exports.adminOnly = async function(req, res, next){
-  console.log("in admin only")
   try{
     let user = await db.User.findById(req.params.id)
-    console.log("user.authLevel is: ", user.authLevel)
     if(user.authLevel === 'admin' || user.authLevel === 'founder'){
       return next();
     } else {
@@ -62,7 +58,6 @@ exports.adminOnly = async function(req, res, next){
       })
     }
   } catch(err){
-    console.log("err is: ", err)
     return next({
       status:401,
       message: "Access Denied"
