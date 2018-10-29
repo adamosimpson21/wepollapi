@@ -9,9 +9,14 @@ router.route("/:id/authLevel")
     adminOnly)
   .put(helpers.authLevel)
 
+router.route("/:id/demographics")
+  .all(loginRequired,
+    ensureCorrectUser)
+  .put(helpers.demographics)
+
 router.route("/:id/coins")
-    .all(loginRequired,
-      ensureCorrectUser)
+  .all(loginRequired,
+    ensureCorrectUser)
   .put(helpers.addCoins)
 
 router.route("/:id/item/:item_id")

@@ -1,5 +1,6 @@
 const db = require('../models');
 
+// TODO: can this be refactored to use find or indexOf?
 function userHasItem(user, item){
   let userHas = false;
   user.inventory.forEach(inventoryItem => {
@@ -54,6 +55,7 @@ exports.addItem = async function(req, res, next){
 
 exports.removeItem = async function(req, res, next){
   try{
+    // TODO: refactor using findByIdAndUpdate
     let user = await db.User.findById(req.params.id)
     let index = user.inventory.indexOf(req.params.item_id)
     user.inventory.splice(index, 1)
@@ -69,6 +71,15 @@ exports.authLevel = async function(req,res, next){
     let user = await db.User.findByIdAndUpdate(req.params.id, {authLevel: req.body.authLevel})
     return res.status(200).json(user)
   } catch (err){
+    return next(err)
+  }
+}
+
+exports.demographics = async function(req, res, next){
+  try{
+    let user = await db.User.findByIdAndUpdate(req.params.id, {...req.body}, {new:true})
+    return res.status(200).json(user)
+  } catch(err){
     return next(err)
   }
 }
