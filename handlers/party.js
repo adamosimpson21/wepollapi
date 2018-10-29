@@ -54,11 +54,9 @@ exports.joinParty = async function(req, res, next){
   try {
     const party = await db.Party.findById(req.params.partyId)
     const user = await db.User.findById(req.params.id)
-    let message = ''
     if (party.joinType === 'open') {
       if(user.party){
         if(user.party._id.toString()===req.params.partyId){
-          console.log("Get bumped")
           return next({
             status: 403,
             message: "You're already in this party!"
@@ -69,12 +67,19 @@ exports.joinParty = async function(req, res, next){
       }
       user.party = req.params.partyId
       party.members.push(req.params.id)
-      console.log("party.members = ", party.members)
-      message = "You've successfully joined " + party.name
+      const message = "You've successfully joined " + party.name
+      await user.save()
+      await party.save()
+      const response = { user, party, message}
+      res.status(200).json(response)
     } else if (party.joinType === 'approval') {
       // TODO: handle this functionality later. Would require some type of CMS
       party.approvalList.push(req.params.id)
-      message = "Your request to join has been sent and is awaiting approval"
+      const message = "You'on the approval list for " + party.name
+      await user.save()
+      await party.save()
+      const response = { user, party, message}
+      res.status(200).json(response)
     } else if (party.joinType === 'closed') {
       return next({
         status: 403,
@@ -86,6 +91,7 @@ exports.joinParty = async function(req, res, next){
         message: "Error joining party"
       })
     }
+    // fallback
     await user.save()
     await party.save()
     const response = { user, party, message}
@@ -97,29 +103,9 @@ exports.joinParty = async function(req, res, next){
 
 exports.leaveParty = async function(req, res){
   try {
-    // const party = await db.Party.findById(req.params.partyId)
-    // const user = await db.User.findById(req.params.id)
-    // console.log("user.party is: ", user.party);
-    // if (party.joinType === 'open') {
-    //   user.party = req.params.partyId
-    //   party.members.push(req.params.id)
-    //   console.log("party.members = ", party.members)
-    //   message = "You've successfully joined " + party.name
-    // } else if (party.joinType === 'approval') {
-    //   party.approvalList.push(req.params.id)
-    //   message = "Your request to join has been sent and is awaiting approval"
-    // } else if (party.joinType === 'closed') {
-    //   message = "This group is not accepting new members at this time"
-    // } else {
-    //   message = "Error, party cannot be joined"
-    // }
-    // await user.save()
-    // await party.save()
-    // const response = {}
-    // response.user = user
-    // response.party = party
-    // response.message = message
-    // res.json(response)
+    let user = await db.User.findByIdAndUpdate(req.params.id, {party:null})
+    await db.Party.findByIdAndUpdate(req.params.partyId, {$pull :{members: user._id}})
+    res.status(200).json("You have left this party")
   } catch (err){
     res.send(err)
   }
