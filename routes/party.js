@@ -6,6 +6,9 @@ const { loginRequired, ensureCorrectUser, adminOnly } = require('../middleware/a
 router.route('/')
   .get(helpers.getParties)
 
+router.route('/:partyId')
+  .get(helpers.getParty)
+
 router.route('/:id')
   .all(loginRequired, ensureCorrectUser)
   .put(helpers.leaveParty)
@@ -14,7 +17,6 @@ router.route('/:id')
 router.route('/:id/:partyId')
   .all(loginRequired, ensureCorrectUser)
   .post(helpers.joinParty)
-  .get(helpers.getParty)
   .put(adminOnly, helpers.updateParty)
   .delete(adminOnly, helpers.deleteParty)
 

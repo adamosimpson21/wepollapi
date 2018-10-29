@@ -7,12 +7,10 @@ const partySchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  president:[
-    {
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"User"
-    }
-  ],
+  president:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"User"
+  },
   officers:[
     {
       type:mongoose.Schema.Types.ObjectId,
