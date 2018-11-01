@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd9572c8-9e97-4818-9669-ea8609e7221b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/questions.js" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/questions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,7 +29,7 @@
           <entry key="Procfile" value="1" />
           <entry key="env" value="3" />
           <entry key="gitignore" value="2" />
-          <entry key="js" value="65" />
+          <entry key="js" value="66" />
           <entry key="json" value="2" />
           <entry key="pug" value="1" />
           <entry key="www" value="1" />
@@ -40,14 +40,14 @@
           <entry key=".env file" value="3" />
           <entry key="JSON" value="2" />
           <entry key="Jade" value="1" />
-          <entry key="JavaScript" value="66" />
+          <entry key="JavaScript" value="67" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="2" />
-          <entry key="js" value="4190" />
+          <entry key="js" value="4217" />
           <entry key="json" value="29" />
         </counts>
       </usages-collector>
@@ -55,7 +55,7 @@
         <counts>
           <entry key=".env file" value="2" />
           <entry key="JSON" value="29" />
-          <entry key="JavaScript" value="4190" />
+          <entry key="JavaScript" value="4217" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -64,11 +64,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handlers/questions.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="363">
-              <caret line="30" column="211" selection-start-line="30" selection-start-column="211" selection-end-line="30" selection-end-column="211" />
+              <caret line="30" column="69" lean-forward="true" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1472">
+              <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -108,10 +117,10 @@
         <option value="$PROJECT_DIR$/models/party.js" />
         <option value="$PROJECT_DIR$/routes/party.js" />
         <option value="$PROJECT_DIR$/routes/user.js" />
-        <option value="$PROJECT_DIR$/models/user.js" />
         <option value="$PROJECT_DIR$/helpers/user.js" />
         <option value="$PROJECT_DIR$/models/index.js" />
         <option value="$PROJECT_DIR$/handlers/questions.js" />
+        <option value="$PROJECT_DIR$/models/user.js" />
       </list>
     </option>
   </component>
@@ -241,12 +250,12 @@
       <option name="presentableId" value="Default" />
       <updated>1539924002081</updated>
       <workItem from="1539924004167" duration="19095000" />
-      <workItem from="1540248878459" duration="24499000" />
+      <workItem from="1540248878459" duration="28433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43594000" />
+    <option name="totallyTimeSpent" value="47528000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1873" height="1096" extended-state="6" />
@@ -361,13 +370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="87" column="394" lean-forward="true" selection-start-line="87" selection-start-column="10" selection-end-line="87" selection-end-column="394" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/party.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -424,6 +426,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/result.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/question.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-299">
@@ -431,13 +436,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/result.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/handlers/questions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
-          <caret line="30" column="211" selection-start-line="30" selection-start-column="211" selection-end-line="30" selection-end-column="211" />
+          <caret line="30" column="69" lean-forward="true" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1472">
+          <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
         </state>
       </provider>
     </entry>

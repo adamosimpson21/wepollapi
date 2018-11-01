@@ -28,7 +28,9 @@ exports.createQuestion = async function(req, res, next){
 
 exports.getQuestion = async function(req, res, next){
   try{
-    let question = await db.Question.findById(req.params.question_id).populate('author', {username:true}).populate({path : 'results', populate: { path: 'user', select :'age familySize gender income location race' }})
+    let question = await db.Question.findById(req.params.question_id)
+      .populate('author', {username:true})
+      .populate({path : 'results', populate: { path: 'user', select :'age familySize gender income location race education' }})
     return res.status(200).json(question)
   } catch(err){
     return next(err);
