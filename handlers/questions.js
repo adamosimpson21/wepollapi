@@ -1,8 +1,9 @@
 const db = require("../models")
 
+const populateDemographics = {path : 'results', populate: { path: 'user', select :'age familySize gender income location race education' }}
+
 exports.createQuestion = async function(req, res, next){
   try{
-    console.log("in create question. req.body is: ", req.body)
     const { title, questionContent, description, education, tags, answers } = req.body
     let question = await db.Question.create({
       title,
@@ -30,7 +31,7 @@ exports.getQuestion = async function(req, res, next){
   try{
     let question = await db.Question.findById(req.params.question_id)
       .populate('author', {username:true})
-      .populate({path : 'results', populate: { path: 'user', select :'age familySize gender income location race education' }})
+      .populate(populateDemographics)
     return res.status(200).json(question)
   } catch(err){
     return next(err);
@@ -49,7 +50,6 @@ exports.getAllQuestions = async function(req, res, next){
 exports.updateQuestion = async function(req, res, next){
   try{
     let question = await db.Question.findById(req.params.iq)
-    console.log("not implemented yet: ", question)
     return res.status(200).json(question)
   } catch(err){
     return next(err);
@@ -69,7 +69,7 @@ exports.deleteQuestion = async function(req, res, next){
 exports.answerQuestion = async function(req, res, next){
   try{
     // TODO: There are a lot more things to include here. Not finished at all
-    let question = await db.Question.findById(req.params.question_id).populate('results').populate('author', {username:true})
+    let question = await db.Question.findById(req.params.question_id)
     let user = await db.User.findById(req.params.id)
     let result = await db.Result.create({question:question._id, user:user._id, answer:req.body.answer})
     Number.isInteger(question.xpReward) ? user.experience += question.xpReward : null
@@ -78,10 +78,10 @@ exports.answerQuestion = async function(req, res, next){
     question.results.push(result._id)
     await user.save();
     await question.save();
+    let populatedQuestion =  await db.Question.findById(req.params.question_id).populate(populateDemographics).populate('author', {username:true})
     let response = {}
     response.user = user;
-    response.question = question;
-    response.result = result;
+    response.question = populatedQuestion;
     return res.status(200).json(response);
   } catch(err){
     return next(err);
