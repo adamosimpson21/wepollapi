@@ -10,7 +10,7 @@ const errorHandler = require("./handlers/error")
 let corsOptions = {}
 if(process.env.NODE_ENV==='production'){
   corsOptions = {
-    origin: 'https://wepoll.herokuapp.com',
+    origin: 'http://wepoll.herokuapp.com',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 } else if(process.env.NODE_ENV==='development'){
