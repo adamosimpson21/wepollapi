@@ -44,7 +44,7 @@ const UserSchema = new mongoose.Schema({
   ],
   coins:{
       type:Number,
-      default: 5
+      default: 20
     },
   experience:{
       type:Number,

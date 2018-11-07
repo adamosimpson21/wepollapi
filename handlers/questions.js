@@ -72,14 +72,19 @@ exports.answerQuestion = async function(req, res, next){
     let question = await db.Question.findById(req.params.question_id)
     let user = await db.User.findById(req.params.id)
     let result = await db.Result.create({question:question._id, user:user._id, answer:req.body.answer})
+    let message = null
     Number.isInteger(question.xpReward) ? user.experience += question.xpReward : null
     user.results.push(result)
+    const coinsToEarn = 5;
+    user.coins += coinsToEarn
+    message = `You've earned ${coinsToEarn} Opinion Points`;
     user.questions.push(question._id)
     question.results.push(result._id)
     await user.save();
     await question.save();
     let populatedQuestion =  await db.Question.findById(req.params.question_id).populate(populateDemographics).populate('author', {username:true})
     let response = {}
+    response.message = message;
     response.user = user;
     response.question = populatedQuestion;
     return res.status(200).json(response);
