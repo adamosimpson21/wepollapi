@@ -71,7 +71,7 @@ exports.answerQuestion = async function(req, res, next){
     // TODO: There are a lot more things to include here. Not finished at all
     let question = await db.Question.findById(req.params.question_id)
     let user = await db.User.findById(req.params.id)
-    let result = await db.Result.create({question:question._id, user:user._id, answer:req.body.answer})
+    let result = await db.Result.create({question:question._id, user:user._id, answer:req.body.answer, securityLevel:req.body.securityLevel})
     let messages = []
     Number.isInteger(question.xpReward) && (user.experience += question.xpReward) && messages.push({message:`You've earned ${question.xpReward} Experience`, degree:"success"})
     const coinsToEarn = 5;

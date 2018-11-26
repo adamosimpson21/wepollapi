@@ -11,6 +11,11 @@ const ResultSchema = new mongoose.Schema({
   user:{
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
+  },
+  securityLevel: {
+    type:String,
+    default:'private',
+    enum: ['secret', 'private','public']
   }
 },{
   timestamps:true
