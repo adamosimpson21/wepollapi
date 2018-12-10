@@ -40,6 +40,11 @@ const questionSchema = new mongoose.Schema({
       ref: "Tag"
     }
   ],
+  answerType:{
+    type: String,
+    default: 'single',
+    enum: ['single', 'multiple', 'range']
+  },
   answers: [
     {
       type:String

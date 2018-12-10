@@ -4,7 +4,7 @@ const populateDemographics = {path : 'results', populate: { path: 'user', select
 
 exports.createQuestion = async function(req, res, next){
   try{
-    const { title, questionContent, description, education, tags, answers } = req.body
+    const { title, questionContent, description, education, tags, answers, answerType } = req.body
     let question = await db.Question.create({
       title,
       education,
@@ -12,6 +12,7 @@ exports.createQuestion = async function(req, res, next){
       questionContent,
       description,
       answers,
+      answerType,
       author:req.params.id
     })
     let foundUser = await db.User.findById(req.params.id)

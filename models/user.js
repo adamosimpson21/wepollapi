@@ -14,6 +14,10 @@ const UserSchema = new mongoose.Schema({
     },
   image: String,
   settings: [],
+  email:{
+    type:String,
+    default: undefined
+  },
   authLevel: {
       type:String,
       enum: ['user', 'subscriber', 'admin', 'founder'],
@@ -58,7 +62,7 @@ const UserSchema = new mongoose.Schema({
     ],
   avatar:{
       type:String,
-      default: "https://freeclipartimage.com//storage/upload/human-clipart/human-clipart-15.png"
+      default: "https://images.unsplash.com/photo-1488953348951-d465fedacbc3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=175168216823bb306a93b94907928289&auto=format&fit=crop&w=616&q=80"
     },
   age:{
       type:Number,
