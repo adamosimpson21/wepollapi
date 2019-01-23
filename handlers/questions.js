@@ -15,10 +15,8 @@ exports.createQuestion = async function(req, res, next){
       answerType,
       author:req.params.id
     })
-    let foundUser = await db.User.findById(req.params.id)
-    foundUser.authored.push(question.id);
-    await foundUser.save()
-    let response = "Question " + title + " created successfully."
+    let user = await db.User.findByIdAndUpdate(req.params.id, {$push:{authored:question.id}}, {new:true})
+    let response = {message: "Question " + title + " created successfully.", user}
     return res.status(200).json(response);
   } catch(err){
     return next(err);
