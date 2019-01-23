@@ -18,11 +18,8 @@ exports.createQuestion = async function(req, res, next){
     let foundUser = await db.User.findById(req.params.id)
     foundUser.authored.push(question.id);
     await foundUser.save()
-    let foundQuestion = await db.Question.findById(question._id)
-      .populate("user", {
-        username: true
-      })
-    return res.status(200).json(foundQuestion);
+    let response = "Question " + title + " created successfully."
+    return res.status(200).json(response);
   } catch(err){
     return next(err);
   }
