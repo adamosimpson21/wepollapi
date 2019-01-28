@@ -36,7 +36,7 @@ exports.getQuestion = async function(req, res, next){
 
 exports.getAllQuestions = async function(req, res, next){
   try{
-    let questions = await db.Question.find({})
+    let questions = await db.Question.find()
     return res.status(200).json(questions)
   } catch(err){
     return next(err);
@@ -54,9 +54,8 @@ exports.updateQuestion = async function(req, res, next){
 
 exports.deleteQuestion = async function(req, res, next){
   try{
-    let foundQuestion = await db.Question.findById(req.params.question_id)
-    await foundQuestion.remove();
-    return res.status(200).json(foundQuestion)
+    await db.Question.findByIdAndRemove(req.params.question_id)
+    return res.status(200).json()
   } catch(err){
     return next(err);
   }
@@ -65,23 +64,21 @@ exports.deleteQuestion = async function(req, res, next){
 exports.answerQuestion = async function(req, res, next){
   try{
     // TODO: There are a lot more things to include here. Not finished at all
-    let question = await db.Question.findById(req.params.question_id)
-    let user = await db.User.findById(req.params.id)
-    let result = await db.Result.create({question:question._id, user:user._id, answer:req.body.answer, securityLevel:req.body.securityLevel})
+    const {answer, securityLevel} = req.body
+    const {id, question_id} = req.params
+    let question = await db.Question.findById(question_id)
+    let user = await db.User.findById(id)
+    let result = await db.Result.create({question:question._id, user:user._id, answer, securityLevel})
     let messages = []
     Number.isInteger(question.xpReward) && (user.experience += question.xpReward) && messages.push({message:`You've earned ${question.xpReward} Experience`, degree:"success"})
+    // will change in the future, needs to be modular
     const coinsToEarn = 5;
     Number.isInteger(coinsToEarn) && (user.coins += coinsToEarn) && messages.push({message:`You've earned ${coinsToEarn} Opinion Points`, degree:"success"});
     user.results.push(result)
     user.questions.push(question._id)
-    question.results.push(result._id)
     await user.save();
-    await question.save();
-    let populatedQuestion =  await db.Question.findById(req.params.question_id).populate(populateDemographics).populate('author', {username:true})
-    let response = {}
-    response.messages = messages;
-    response.user = user;
-    response.question = populatedQuestion;
+    let populatedQuestion =  await db.Question.findByIdAndUpdate(question_id, {$push:{results:result._id}}, {new: true}).populate(populateDemographics).populate('author', {username:true})
+    let response = { messages, user, question:populatedQuestion};
     return res.status(200).json(response);
   } catch(err){
     return next(err);
