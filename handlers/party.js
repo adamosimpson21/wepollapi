@@ -32,32 +32,27 @@ exports.deleteParty = function(req, res){
 
 exports.joinParty = async function(req, res, next){
   try {
-    const party = await db.Party.findById(req.params.partyId)
-    const user = await db.User.findById(req.params.id)
-    if (party.joinType === 'open') {
-      if(user.party){
-        if(user.party._id.toString()===req.params.partyId){
-          return next({
-            status: 403,
-            message: "You're already in this party!"
-          })
-        } else {
-          await db.Party.findByIdAndUpdate(user.party,{$pull :{members: user._id}})
-        }
-      }
-      user.party = req.params.partyId
-      party.members.push(req.params.id)
+    const {partyId, id} = req.params
+    const party = await db.Party.findById(partyId)
+    const user = await db.User.findById(id)
+    if(user.party && user.party._id.toString()===partyId) {
+      return next({
+        status: 403,
+        message: "You're already in this party!"
+      })
+    } else if (party.joinType === 'open') {
+      // take the user out of the old party
+      user.party && await db.Party.findByIdAndUpdate(user.party,{$pull :{members: user._id}})
+      await user.update({$set: {party:partyId}})
+      await party.update({$push: {members:id}})
       const message = "You've successfully joined " + party.name
-      await user.save()
-      await party.save()
       const response = { user, party, message}
       res.status(200).json(response)
     } else if (party.joinType === 'approval') {
       // TODO: handle this functionality later. Would require some type of CMS
-      party.approvalList.push(req.params.id)
+      // Unreachable without Admin Tools
+      await party.update({$push: {approvalList:id}})
       const message = "You'on the approval list for " + party.name
-      await user.save()
-      await party.save()
       const response = { user, party, message}
       res.status(200).json(response)
     } else if (party.joinType === 'closed') {
