@@ -67,10 +67,7 @@ exports.joinParty = async function(req, res, next){
       })
     }
     // fallback
-    await user.save()
-    await party.save()
-    const response = { user, party, message}
-    res.status(200).json(response)
+    // return next;
   } catch (err){
     return next(err)
   }
