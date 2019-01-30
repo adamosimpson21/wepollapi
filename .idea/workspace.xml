@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd9572c8-9e97-4818-9669-ea8609e7221b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/party.js" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/party.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -63,7 +64,7 @@
         <counts>
           <entry key="Dockerfile" value="33" />
           <entry key="env" value="2" />
-          <entry key="js" value="6254" />
+          <entry key="js" value="6489" />
           <entry key="json" value="33" />
           <entry key="md" value="44" />
         </counts>
@@ -73,7 +74,7 @@
           <entry key=".env file" value="2" />
           <entry key="Dockerfile" value="33" />
           <entry key="JSON" value="33" />
-          <entry key="JavaScript" value="6254" />
+          <entry key="JavaScript" value="6489" />
           <entry key="Markdown" value="44" />
         </counts>
       </usages-collector>
@@ -86,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlers/party.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="70" column="16" lean-forward="true" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+            <state relative-caret-position="340">
+              <caret line="50" column="46" lean-forward="true" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -267,16 +268,15 @@
       <workItem from="1545959829041" duration="4666000" />
       <workItem from="1546248330305" duration="212000" />
       <workItem from="1546420326031" duration="5305000" />
-      <workItem from="1547763696710" duration="14709000" />
+      <workItem from="1547763696710" duration="16968000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114349000" />
+    <option name="totallyTimeSpent" value="116608000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1873" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14986376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -491,8 +491,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handlers/party.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="70" column="16" lean-forward="true" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+        <state relative-caret-position="340">
+          <caret line="50" column="46" lean-forward="true" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
         </state>
       </provider>
     </entry>

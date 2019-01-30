@@ -43,8 +43,10 @@ exports.joinParty = async function(req, res, next){
     } else if (party.joinType === 'open') {
       // take the user out of the old party
       user.party && await db.Party.findByIdAndUpdate(user.party,{$pull :{members: user._id}})
-      await user.update({$set: {party:partyId}})
-      await party.update({$push: {members:id}})
+      user.party = partyId
+      party.members.push(id)
+      await user.save()
+      await party.save()
       const message = "You've successfully joined " + party.name
       const response = { user, party, message}
       res.status(200).json(response)
