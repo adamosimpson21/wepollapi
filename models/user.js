@@ -70,7 +70,7 @@ const UserSchema = new mongoose.Schema({
     },
   race:{
       type:String,
-      enum: ['White', 'Black', 'Native American', 'Hispanic', 'Other', 'Not Specified'],
+      enum: ['Native American', 'African American', 'White American', 'Mixed Northern American', 'European', 'Hispanic', 'South American', 'East Asian', 'African', 'Middle Eastern', 'Mixed or Multiple Races', 'Other', 'Not Specified'],
       default: 'Not Specified'
     },
   income:{
@@ -79,7 +79,7 @@ const UserSchema = new mongoose.Schema({
     },
   gender:{
       type:String,
-      enum: ['Male', 'Female', 'Other', 'Choose not to say', 'Not Specified'],
+      enum: ['Male', 'Female', 'Trans-Male', 'Trans-Female', 'Neutral', 'Nonconforming', 'Other', 'Not Specified'],
       default: 'Not Specified'
     },
   education:{
