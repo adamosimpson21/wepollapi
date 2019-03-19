@@ -18,13 +18,13 @@ exports.signin = async function(req, res, next){
     } else {
       return next({
         status: 400,
-        message: "Invalid Email/Password."
+        message: "Invalid UserName/Password."
       })
     }
   } catch(err){
     return next({
       status: 400,
-      message: "Invalid Email/Password."
+      message: "Invalid UserName/Password."
     })
   }
 }
@@ -43,7 +43,7 @@ exports.signup = async function(req, res, next){
 
   } catch(err) {
     if(err.code === 11000){
-      err.message = "Sorry, that username and/or email is taken"
+      err.message = "Sorry, that username is taken"
     }
     return next({
       status:400,
@@ -67,7 +67,7 @@ exports.hydrate = async function(req, res, next){
   } catch(err){
     return next({
       status: 400,
-      message: "Invalid Email/Password."
+      message: "Invalid UserName/Password."
     })
   }
 }
