@@ -18,13 +18,13 @@ exports.signin = async function(req, res, next){
     } else {
       return next({
         status: 400,
-        message: "Invalid UserName/Password."
+        message: "Invalid UserName/Password. Try again."
       })
     }
   } catch(err){
     return next({
       status: 400,
-      message: "Invalid UserName/Password."
+      message: "Invalid UserName/Password. Try again."
     })
   }
 }
@@ -67,7 +67,7 @@ exports.hydrate = async function(req, res, next){
   } catch(err){
     return next({
       status: 400,
-      message: "Invalid UserName/Password."
+      message: "Invalid UserName/Password. Try again."
     })
   }
 }
