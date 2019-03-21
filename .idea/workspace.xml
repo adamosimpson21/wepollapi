@@ -63,7 +63,7 @@
         <counts>
           <entry key="Dockerfile" value="33" />
           <entry key="env" value="2" />
-          <entry key="js" value="6497" />
+          <entry key="js" value="6511" />
           <entry key="json" value="33" />
           <entry key="md" value="44" />
         </counts>
@@ -73,7 +73,7 @@
           <entry key=".env file" value="2" />
           <entry key="Dockerfile" value="33" />
           <entry key="JSON" value="33" />
-          <entry key="JavaScript" value="6497" />
+          <entry key="JavaScript" value="6511" />
           <entry key="Markdown" value="44" />
         </counts>
       </usages-collector>
@@ -104,8 +104,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlers/auth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+            <state relative-caret-position="363">
+              <caret line="69" column="43" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -299,16 +299,15 @@
       <workItem from="1549001524773" duration="2441000" />
       <workItem from="1549776872123" duration="599000" />
       <workItem from="1552119799456" duration="2671000" />
-      <workItem from="1552601494363" duration="1989000" />
+      <workItem from="1552601494363" duration="3332000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124381000" />
+    <option name="totallyTimeSpent" value="125724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1873" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14986376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -519,8 +518,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handlers/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        <state relative-caret-position="363">
+          <caret line="69" column="43" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
         </state>
       </provider>
     </entry>
