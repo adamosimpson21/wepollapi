@@ -34,6 +34,11 @@ const questionSchema = new mongoose.Schema({
     default: 150
   },
   education: String,
+  priority: {
+    type:Number,
+    required:true,
+    default:0
+  },
   tags: [
     {
       type:mongoose.Schema.Types.ObjectId,

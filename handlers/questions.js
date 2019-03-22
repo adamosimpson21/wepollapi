@@ -85,4 +85,12 @@ exports.answerQuestion = async function(req, res, next){
   }
 }
 
+exports.changePriority = async function(req, res, next){
+  try{
+    return await db.Question.findByIdAndUpdate(req.params.question_id, {$set:{priority:req.body.priority}}, {new:true})
+  } catch(err){
+    return next(err);
+  }
+}
+
 module.exports = exports;

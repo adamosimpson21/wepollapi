@@ -6,7 +6,8 @@ const { createQuestion,
         deleteQuestion,
         getAllQuestions,
         updateQuestion,
-        answerQuestion} = require("../handlers/questions")
+        answerQuestion,
+        changePriority} = require("../handlers/questions")
 
 router.route("/")
   .get(getAllQuestions)
@@ -19,7 +20,7 @@ router.route("/:id/:question_id")
   .get(getQuestion)
   .put(loginRequired,
     ensureCorrectUser,
-    updateQuestion)
+    changePriority)
   .delete(ensureCorrectUser,
     loginRequired,
     deleteQuestion)
